@@ -148,6 +148,7 @@ more extras :
 - created cute visuals and effects, and added squishy sound effects to make it fun.
 - preety UI, i hade some UI assets that are cute.
 - Cute animated title text :)
+- The sound pitch increases when you pop them fruit balls ! ;)
 
 
 
