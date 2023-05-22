@@ -113,6 +113,23 @@ there are more ways, and this prototype is a decent middle ground.
 if you'll like to know more about my design decisions feel free to ask :)
 
 
+------------------------------------	
+Notes :
+------------------------------------
+
+- i wrote large comments when things might not be clear.
+
+- in general : I dodnt write comments for what is explained by the code it self.
+- my approch was to write very readable and self explenetary code :)
+
+- I Wrote a LOT of logs to be able to see EVERYTHING that is happening.
+  it can be VERY helpfull :)
+
+  ( i didnt bother with log levels, just kept it lind of "Verbouse" )
+
+- if all else failes and something is not clear,
+  please feel free to ask any question, no matter how small or silly :)
+
 ------------------------------------
 Known Isses :
 ------------------------------------
