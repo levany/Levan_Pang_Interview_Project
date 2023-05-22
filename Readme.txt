@@ -24,11 +24,11 @@ that is the root of everything
 top 10 things to know:
 ------------------------------------------------------------------------
 
-1. i split the app to 2 folders : "App" and "Game"
+1. i split the app to 2 folders : "Source" and "Game"
    to show different approches for architecture.
 
-   "App"  - menus and stuff - is more classicly suited for MVC
-   "Game" - gameplay stuff  - still designed it on close to MVC but alittle more flexible as needed
+   "Source"  = App stuff. = menus. services. etc. - it's more classicly suited for MVC
+   "Game"    = gameplay stuff. still designed close to MVC, but a little more flexible as needed
 
 2.  The basic flow is :
 
@@ -38,12 +38,12 @@ top 10 things to know:
 3. the Game controller handles the actual game :
 
 	1. Setup    : sets up all the managers, the stage, the mechanics, the levels, etc...
-	2. gameplay : calls LevelController to handle each level
-	3. Cleanup  : Disposes of what needs to be disposed (but storing things in object pools, so more efficiand if we play again)
+	2. gameplay : calls LevelController to handle each level.
+	3. Cleanup  : Disposes of what needs to be disposed (storing things in object-pools. more efficiand if we play again)
 
 4.  the Levelcontroller contoles a single Level (each time) :
 
-	1. Loads the Levels  - (for easy edit - levels are scriptable objects with a list of prefabs and values that make the level) 
+	1. Loads the Level - (for easy edit - levels are scriptable objects with a list of prefabs and values that make the level) 
 	2. starts playing
 	3. Waits for the "LastBallKilled" event to know we won. or "Last Hero killed" to know we lost.
 	4. Finishes and cleans up.
@@ -52,22 +52,22 @@ top 10 things to know:
 
 	in this prototype we have :
 
-	- "Player"s  = represents human user. and its data (name, score, ...). = NOT A GAMEPLAY OBJECT !
-	- "Hero"s	 = The cute characters you controll
-	- "Harpoon"s = the harpoon the heros shoot. (Wikipedia says that in the original pang its calld "Harpoon")
-	- "Ball"s	 = The things that hurt you. They are called "Balls". But look like friuts. dont let them deceive you.
+	- "Players"  = represents a human user, and its data (name, score, ...). = NOT A GAMEPLAY OBJECT !
+	- "Heros"    = The cute characters you controll.
+	- "Harpoons" = the harpoon the heros shoot. (Wikipedia says that in the original pang its calld "Harpoon")
+	- "Balls"    = The things that hurt you. They are called "Balls". But look like friut. dont let them deceive you.
 
-	- each of the above may also have managers and models aif needed.
+	- each of the above may also have managers and models as needed.
 
 6. "PangMechanics"
 
-	- the c# objects each of the above DO NOT KNOW ABOUT EACH OTHER.
+	- the c# objects of each of the above DO NOT KNOW ABOUT EACH OTHER.
 	  they emit and respond to events.
 
 	- the "PangMechanics" controller is the only object that knows evryone involved.
 	  it routs the events and manages the specific gameplay for "Pang"
 
-	 but everything else is generic and can easlly makeup another game for example.
+	  everything else is generic. and can easlly makeup another game for example.
 	 
 
 7. Data :
@@ -82,16 +82,15 @@ top 10 things to know:
 
 	- they do the things and maipulate the data.
 
-	- "Controllers" = the basic objects that controll flow or controll on specific thing (such as Game, or level)
+	- "Controllers" = the basic objects that control flow or control a specific thing (such as Game, or level)
 	- "Services"    = 'controllers' that provide common app services and utility, they do not know the context of the app. (e.g. StorageService)
-	- "Managers     = 'controllers' that usually manage a collection of something. for simplicity. (e.g. "BallManager" \ "Hero Manager"). they hold object pools. they don't control flow.
+	- "Managers     = 'controllers' that usually manage a collection of something. (e.g. "BallManager" \ "Hero Manager"). they hold object pools. they don't control flow.
 
 9. Views :
 
-	- they show the stuff.
-	- they do not controll the stuff. they use events to call the thing that controll the stuff, and to refresh after stuff has been controlled.
+      - they show the stuff.
+      - they do not control the stuff. they use events to call the thing that controls the stuff, and refresh after stuff has been controlled.
 	- They Use Data, but do not change the data. only show the data.
-
 
 10. Cheats :
 
@@ -106,11 +105,11 @@ Notes :
 ------------------------------------
 
 I've worked in many systems - some simple, some complex,
-and this prototype is just one example of you you can do things.
+and this prototype is just one example of how you can do things.
 
 there are more ways, and this prototype is a decent middle ground.
 
-if you'll like to know more about my design decisions feel free to ask :)
+if you'd like to know more about my design decisions feel free to ask :)
 
 
 ------------------------------------	
@@ -119,26 +118,30 @@ Documentation :
 
 - i wrote large comments when things might not be clear.
 
-- in general : I dodnt write comments for what is explained by the code it self.
+- in general - I didnt write comments for what is explained by the code it self.
 - my approch was to write very readable and self explenetary code :)
 
 - I Wrote a LOT of logs to be able to see EVERYTHING that is happening.
   it can be VERY helpfull :)
 
-  ( i didnt bother with log levels, just kept it lind of "Verbouse" )
+  ( i didnt bother with log levels, just kept it kind of "Verbouse" )
 
 - if all else failes and something is not clear,
   please feel free to ask any question, no matter how small or silly :)
+
 
 ------------------------------------
 Known Isses :
 ------------------------------------
 - Leaderboard sometimes doesnt update correctly
+	+ the "New Record !" popup doesnt show up every time there is a new record
 - I Disabled some object pools (like the one in the "BallManager" class because of bugs),  but i do recomend the use of object pools ! :)
+- particals appear behind background in levels 2 and 3
+- sometimes it gets stuck on android. - possibly only between level changes
 
 
 
-------------------------------------
+-----------------------------------------
 Requirements Checklist (from the exercise doc) :
 -----------------------------------------
 1. the game screen is adaptive
@@ -150,12 +153,13 @@ Requirements Checklist (from the exercise doc) :
 7. used latest LTS
 
 
----------------------------------------
+
+----------------------------------------
 Extra Credit Requirements (checklist) :
 ----------------------------------------
 1. Desigen with MVC :)
 2. three levels (and can easly make more) with increasing difficulty
-3. used a shader for the Xray effect, used some custom visuals, created some myself.
+3. Wrote (=copied and modfied a line of code) a shader for the Xray effect. used some custom visuals. created some myself.
 4. levels have minimlistic music and SFX. menus do not - because its anoyying when you test a lot - hope youll like it :)
 5. Two player same screen multiplayer , and its fun ! :)
 6. Leaderboards + online leaderboards 
@@ -163,9 +167,18 @@ Extra Credit Requirements (checklist) :
 more extras :
 - added a (VERY BASIC (!)) onlne storage service for the leaderboards :)
 - created cute visuals and effects, and added squishy sound effects to make it fun.
-- preety UI, i hade some UI assets that are cute.
+- created a very small ScriptableObject data infrastructure
+- preety UI, i had some UI assets that are cute.
 - Cute animated title text :)
 - The sound pitch increases when you pop them fruit balls ! ;)
+
+
+
+----------------------------------------
+Thank you
+----------------------------------------
+
+Thank you :)
 
 
 
