@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6198f1ba41056f5439ea9a0138488cb8, type: 3}
+  m_Name: Player1
+  m_EditorClassIdentifier: 
+  Name: Player1
+  Score: 0
+  Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  RightInput:
+    m_Name: Right Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d52542b5-d6b5-4a88-b9ac-ff93556b709a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 16cfcc1c-0158-4eaa-b45e-6982cca60e34
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 0
+    - m_Name: 1D Axis
+      m_Id: 0ad021ba-c482-4370-b2d8-cbda684bf888
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 181b538e-c9e4-4b4b-84ab-2e96982d1603
+      m_Path: <Gamepad>/dpad/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: e0fbc427-a54f-416e-a76f-9000d213ebe4
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 8
+    m_Flags: 0
+  LeftInput:
+    m_Name: Left Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a3b6d9dc-5595-4103-a249-5b005e5022b9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: da8bc129-24db-4a21-b328-c024d6b180e1
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 0
+    - m_Name: 1D Axis
+      m_Id: f2f4ae57-47f4-4f80-8bea-0fa234bdfd1a
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: aebc98b7-c283-492e-8950-bad5ca22f7d2
+      m_Path: <Gamepad>/dpad/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 7ebdb446-8347-49b5-87ed-95829fd31532
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 8
+    m_Flags: 0
+  FireInput:
+    m_Name: Fire Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: eab8d2ed-aae7-4dd7-ae50-5122a94fbebd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3b94bdd7-84bb-45c5-b712-34e71fdade2b
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire Input
+      m_Flags: 0
+    m_Flags: 0

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c4901c676e1274bb771b1e449976f6, type: 3}
+  m_Name: LeaderboardsData
+  m_EditorClassIdentifier: 
+  maxRecords: 10
+  Records:
+  - Name: Arnold
+    Score: 100
+  - Name: Bobby
+    Score: 200
+  - Name: Coolboy
+    Score: 300
+  - Name: Dora
+    Score: 400
+  - Name: Ericica
+    Score: 500
+  - Name: Flintstone
+    Score: 600
+  - Name: GG
+    Score: 700
+  - Name: Havier
+    Score: 800
+  - Name: Ignacio
+    Score: 900
+  - Name: Jacky Chan
+    Score: 1000

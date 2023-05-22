@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84875f66184d6d14680ca054f7a16a2a, type: 3}
+  m_Name: AppSettings
+  m_EditorClassIdentifier: 
+  ShouldStrechWorldToFitScreen: 1
+  EascapeKey: 60
+  ScreenOrientation: 3
+  MaxSupportedPlayers: 2
+  Use_Simple_Cloud_Service: 1
+  CHEAT_HERO_CANT_DIE: 0
+  CHEAT_ESC_KEY_WINS_LEVEL: 0

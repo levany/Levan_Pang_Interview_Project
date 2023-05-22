@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6198f1ba41056f5439ea9a0138488cb8, type: 3}
+  m_Name: Player2
+  m_EditorClassIdentifier: 
+  Name: Player2
+  Score: 0
+  Color: {r: 0.015686275, g: 0.6392157, b: 1, a: 1}
+  RightInput:
+    m_Name: Right Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 28d96d73-ca03-472d-aa0c-7896828b7534
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7128465d-69ba-4b85-bfe4-5111b284e7c4
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 0
+    - m_Name: 1D Axis
+      m_Id: 91707623-9b90-4640-98e0-e39c76f97da6
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 0323b304-5781-45d5-806a-4d3648370eac
+      m_Path: <Gamepad>/leftStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 699fbfeb-278a-4819-8925-d4d1cf7ebb1e
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Input
+      m_Flags: 8
+    m_Flags: 0
+  LeftInput:
+    m_Name: Left Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cbe432f8-4b66-4ca3-b6ab-4da5bdbcb34f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 29880d64-1a14-4287-9052-c5e28fe3ef49
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 0
+    - m_Name: 1D Axis
+      m_Id: 99916d19-b222-4e1b-84e1-e79ccd97ecbd
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: b15a6c4b-9f4b-4661-8c4c-86ac23bb0634
+      m_Path: <Gamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 87cabbad-bbdc-4c83-87f6-b30db6cf512b
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Input
+      m_Flags: 8
+    m_Flags: 0
+  FireInput:
+    m_Name: Fire Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a318162f-8870-4acf-b548-e848010b454b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1f905bbb-cdd9-4a4c-b399-6eef752c852c
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire Input
+      m_Flags: 0
+    m_Flags: 0

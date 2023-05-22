@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbe8aa8784a9a14b82646e8829db6c7, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  LevelName: Level 1
+  BackgroundColor: {r: 0, g: 1, b: 0.5377979, a: 1}
+  WallsColor: {r: 1, g: 1, b: 1, a: 1}
+  CameraBGColor: {r: 0.13027734, g: 0.3679245, b: 0, a: 1}
+  LevelMusic: {fileID: 8300000, guid: 0ec569bc6860f5343a652dbfc05c743d, type: 3}
+  Prefabs:
+  - {fileID: 7361456867044825837, guid: 3a3ff4e7318cd1048892c7ae58ff0c41, type: 3}
+  - {fileID: 8176348503601486798, guid: 010d19fb760fe9147af4f58d62e5988b, type: 3}
