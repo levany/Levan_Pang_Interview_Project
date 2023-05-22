@@ -114,7 +114,7 @@ if you'll like to know more about my design decisions feel free to ask :)
 
 
 ------------------------------------	
-Notes :
+Documentation :
 ------------------------------------
 
 - i wrote large comments when things might not be clear.
