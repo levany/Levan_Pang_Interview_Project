@@ -85,8 +85,6 @@ namespace LevanPangInterview.Gameplay.Controllers
             Logger.Log($"BallManager.SplitBall : {ball.gameObject.name}");
 
             PlayPopSound();
-            Logger.Log($"Balllllll : {ball.gameObject.name}");
-            Debug.Log(ball.gameObject, ball.gameObject);
 
             if (ball.BallSize > 1)
             {

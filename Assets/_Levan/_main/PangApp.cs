@@ -168,6 +168,7 @@ namespace LevanPangInterview
 
         public async Task RunGmae(int playerCount)
         {
+            Logger.LogSeperator();
             Logger.Log($"RunGmae() player count = {playerCount}");
             
             // Setup
@@ -205,6 +206,7 @@ namespace LevanPangInterview
 
         public async Task RunGameOverFlow()
         {   
+            Logger.LogSeperator();
             Logger.Log("RunGameOverFlow");
 
             await scoreController.RunScoreFlow();
@@ -212,6 +214,7 @@ namespace LevanPangInterview
 
         public async Task RunLeaderboards()
         {
+            Logger.LogSeperator();
             Logger.Log("RunLeaderboards");
 
             await this.leaderboardsView.Execute();

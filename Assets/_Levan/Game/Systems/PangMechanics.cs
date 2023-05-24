@@ -24,8 +24,7 @@ namespace LevanPangInterview.Gameplay.Controllers
         private HeroesManager     HeroManager;
         private HarpoonManager    HarpoonManager;
         private BallManager       BallManager;
-        private PlayersController PlayerController;
-
+        
         [Header("General")]
         public StageController    Stage;
 
@@ -92,6 +91,8 @@ namespace LevanPangInterview.Gameplay.Controllers
         {
             Logger.LogSeperator();
             Logger.Log($"CleanUp");
+
+            this.delaySaftyCheck++;
 
             this.BallManager.CleanUp(); 
             this.HeroManager.Cleanup();

@@ -38,6 +38,8 @@ namespace LevanPangInterview.Controllers
 
             var players = Link.GetData<PlayersCollection>();
 
+            Logger.Log($"player count : {players.Count}");
+
             foreach (var player in players)
             {
                 var isNewRecord = this.leaderboards.IsNewRecord(player.Score);
@@ -50,7 +52,7 @@ namespace LevanPangInterview.Controllers
                     var playerNameForLeaderboards = scoreView.ResultPlayerName;
 
                     if (playerNameForLeaderboards == null)
-                        return;
+                        continue;
 
                     Unibus.Dispatch(new Events.Game.Score.NewRecord() { PlayerName = playerNameForLeaderboards, Score = player.Score } );
                 }

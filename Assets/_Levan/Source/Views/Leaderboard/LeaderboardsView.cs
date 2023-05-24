@@ -103,16 +103,17 @@ namespace LevanPangInterview.Views
 
             try
             {
-                this.LeaderboardsData = Link.GetData<Models.Leaderboards>();
-                var count             = LeaderboardsData.maxRecords;
+                this.LeaderboardsData                 = Link.GetData<Models.Leaderboards>();
+                var count                             = LeaderboardsData.maxRecords;
 
-                Logger.Log($"LoadedData is {LeaderboardsData}");
+                Logger.Log($"LoadedData               = {LeaderboardsData}");
+                Logger.Log($"LoadedData.Recprds.count = {LeaderboardsData.Records.Count}");
 
                 for (int i = 0; i < count; i++)
                 {
                     var winner = LeaderboardsData.Records[i];
 
-                    Logger.Log($"Loaded Winner : {winner.Name} -> {winner.Score}");
+                    Logger.Log($"Loaded Winner : {i} => {winner.Name} : {winner.Score}");
 
                     var item         = this.Items[count - i - 1];
 

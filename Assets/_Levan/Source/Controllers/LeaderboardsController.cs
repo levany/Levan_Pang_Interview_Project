@@ -14,16 +14,16 @@ namespace LevanPangInterview.Controllers
 {
     public class LeaderboardsController : Controller
     {
-        // consts
+        //////////////////////////////// consts
         
         public const string LEADERBOARDS_PERSISTANT_MODEL_KEY = "LEADERBOARDS_PERSISTANT_MODEL_KEY";
 
-        // Members
+        //////////////////////////////// Members
 
         [SerializeField] private Models.Leaderboards LeaderboardsInitialPrestData;
         [NonSerialized ] public  Models.Leaderboards LeaderboardsData;
 
-        // Lifecycle
+        //////////////////////////////// Lifecycle
 
         public override async Task OnSystemInit()
         {
@@ -34,25 +34,23 @@ namespace LevanPangInterview.Controllers
             this.BindUntilDestroy<Events.Game.Score.NewRecord>(OnNewRecord);
         }
 
-        // Api
+        //////////////////////////////// Api
 
         public bool IsNewRecord(int score)
         {
             Logger.Log($"score : {score}");
 
             var minTopScore  = this.LeaderboardsData.Records.Min(w => w.Score);
-            var maxTopScore  = this.LeaderboardsData.Records.Max(w => w.Score);
 
-            bool isNewRecord = score > minTopScore && score <= maxTopScore;
+            bool isNewRecord = score >= minTopScore;
             
             Logger.Log($"minTopScore : {minTopScore}");
-            Logger.Log($"maxTopScore : {maxTopScore}");
             Logger.Log($"IsNewRecord : {isNewRecord}");
             
             return isNewRecord;
         }
 
-        // Events
+        //////////////////////////////// Events
 
         private void OnNewRecord(NewRecord @event)
         {
@@ -77,16 +75,17 @@ namespace LevanPangInterview.Controllers
         }
 
 
-        // Methods
+        //////////////////////////////// Methods
 
         private void LoadLeaderboardsData()
         {
             Logger.Log($"Loading Leaderboards Data");
 
             // Try Online Storage
+            Logger.Log($"loading online data");
             var onlineData = Link.SimpleCloudService.GetItem<Models.Leaderboards>();
 
-            if (onlineData != null)
+            if (IsValidLEaderboardsData(onlineData))
             {
                 Logger.Log($"Loaded Online Data");
 
@@ -95,12 +94,11 @@ namespace LevanPangInterview.Controllers
                 return;
             }
 
-
             // Try Local storage
-
+            Logger.Log($"loading local data");
             var localData = Link.Storage.LoadItem<Models.Leaderboards>(LEADERBOARDS_PERSISTANT_MODEL_KEY);
 
-            if (localData != null )
+            if (IsValidLEaderboardsData(localData))
             {
                 Logger.Log($"Loaded Local Data");
                 
@@ -109,10 +107,17 @@ namespace LevanPangInterview.Controllers
                 return;
             }
             
+
             // If No data available (errors, or first time playing)
             // Use Preset data
+            Logger.Log($"loading preset (backup) data");
             this.LeaderboardsData = Link.Data.ClonePreset<Models.Leaderboards>();
             Link.Data.SetModelSingle(this.LeaderboardsData);
+
+            // if we rech the back up - data is currupted - override it
+            Logger.Log($"Resetting currupt local data to backup");
+            Link.Storage.StoreItem(LEADERBOARDS_PERSISTANT_MODEL_KEY, this.LeaderboardsData);
+
         }
 
         private async Task SaveLeaderboardsData()
@@ -125,6 +130,39 @@ namespace LevanPangInterview.Controllers
             // Online
             Link.SimpleCloudService.SetItem(this.LeaderboardsData);
             await Link.SimpleCloudService.Sync();
+        }
+
+        //////////////////////////////// Helper methods
+        
+        public bool IsValidLEaderboardsData(Models.Leaderboards data)
+        {
+            Logger.Log("checking leaderboard data validity");
+
+            if (data == null)
+            {
+                Logger.LogError("data.records is null");
+                return false;
+            }
+
+            if (data.Records == null)
+            {
+                Logger.LogError("data.records is null");
+                return false;
+            }
+
+            if (data.Records.Count == 0) 
+            {
+                Logger.LogError("data.records.count is 0");
+                return false;
+            }
+
+            if (data.Records.Any(r => r == null))
+            {
+                Logger.LogError("data contains a null record");
+                return false;
+            }
+
+            return true;
         }
     }
 }

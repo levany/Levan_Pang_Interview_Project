@@ -81,15 +81,9 @@ namespace LevanPangInterview.Controllers
             this.ScoreHUDView.Show();
             this.ScoreHUDView.Setup();
 
-            //// Setup Input Hud - only on android
-            
-            
-            if (Application.platform == RuntimePlatform.Android
-            ||  Link.AppSettings.Always_Show_Android_Controls) // to be able to test in the editor
-            {
-                this.InputHUDView.Show();
-                this.InputHUDView.Setup();
-            }
+            //// Setup Input Hud 
+            this.InputHUDView.Show();
+            this.InputHUDView.Setup();
         }
 
         public async Task RunLevels()
@@ -146,15 +140,8 @@ namespace LevanPangInterview.Controllers
             this.ScoreHUDView.Hide();
 
             //// Cleanup Input Hud - Only on android
-            
-            if (Application.platform == RuntimePlatform.Android
-
-            ||  Link.AppSettings.Always_Show_Android_Controls) // to be able to test in the editor
-            {
-                this.InputHUDView.CleanUp();
-                this.InputHUDView.Hide();
-            }
-
+            this.InputHUDView.CleanUp();
+            this.InputHUDView.Hide();
         }
 
         //////////////////////////////////////////////////////////////// Methods

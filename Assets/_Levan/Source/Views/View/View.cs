@@ -17,6 +17,7 @@ namespace LevanPangInterview.Views
 
         public virtual async Task Execute() 
         { 
+            Logger.LogSeperator();
             Logger.Log($"View.Execute() : view = {this.name}");
 
             this.IsActive = true;

@@ -62,7 +62,7 @@ namespace LevanPangInterview.Controllers
             Logger.Log($"PlayerController.SettingModel");
 
             // Saving data in data service
-            Link.Data.AddModel(PlayersCollection);
+            Link.Data.SetModelSingle(PlayersCollection);
         }
     }
 }

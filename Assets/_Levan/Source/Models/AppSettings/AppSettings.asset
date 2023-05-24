@@ -15,6 +15,7 @@ MonoBehaviour:
   ShouldStrechWorldToFitScreen: 1
   EascapeKey: 60
   ScreenOrientation: 3
+  Always_Show_Mobile_Controls: 0
   MaxSupportedPlayers: 2
   Use_Simple_Cloud_Service: 1
   CHEAT_HERO_CANT_DIE: 0

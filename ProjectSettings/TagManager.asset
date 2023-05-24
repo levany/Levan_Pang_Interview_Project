@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 447947903
     locked: 0
+  - name: Particles
+    uniqueID: 1050248063
+    locked: 0
   - name: hero
     uniqueID: 2904824671
     locked: 0
@@ -56,4 +59,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 149171393
+    locked: 0
+  - name: HUD
+    uniqueID: 524745747
     locked: 0

@@ -63,7 +63,17 @@ namespace LevanPangInterview.Views
         {
             if (Keyboard.current[Link.AppSettings.EascapeKey].wasPressedThisFrame)
             {
-                this.CompleteExectiotion();
+                if (isNewRecord)
+                {
+                    if (MainPanel.gameObject.activeSelf)
+                        OnOkButtonClicked();
+                    else
+                        this.CompleteExectiotion();        
+                }
+                else
+                {
+                    this.CompleteExectiotion();
+                }
             }
         }
 

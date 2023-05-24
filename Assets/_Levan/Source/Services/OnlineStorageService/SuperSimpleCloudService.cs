@@ -33,8 +33,7 @@ namespace LevanPangInterview.Services
 
         //// Members
         
-        [SerializeField] private SuperSimpleCloudService.Data data    = new Data();
-        [SerializeField] private BinData                      binData = new BinData();
+        [SerializeField] private BinData binData = new BinData();
         
         //// Properties
 
@@ -55,11 +54,10 @@ namespace LevanPangInterview.Services
             if (!IsServiceEnabledd)
                 return;
 
-            this.data.Items = new();
+            this.binData.record.Items = new();
 
             await ReadData();
         }
-
 
         //// API
         
@@ -70,10 +68,7 @@ namespace LevanPangInterview.Services
                 if (!IsServiceEnabledd)
                     return default;
 
-                if (!IsServiceEnabledd) return null;
-                if (LastError == null)  return null;
-
-                var item = (T)this.data.Items.First(x => x is T);
+                var item = (T)this.binData.record.Items.First(x => x is T);
 
                 return item;
             }
@@ -91,10 +86,10 @@ namespace LevanPangInterview.Services
                 if (!IsServiceEnabledd)
                     return;
 
-                if (this.data.Items.Contains(item))
-                    this.data.Items.Remove(item);
+                if (this.binData.record.Items.Contains(item))
+                    this.binData.record.Items.Remove(item);
 
-                this.data.Items.Add(item);
+                this.binData.record.Items.Add(item);
             }
             catch (Exception ex)
             {
@@ -137,7 +132,8 @@ namespace LevanPangInterview.Services
                 bool isSuccess;
 
                 // Serialize item
-                string JsonBody = JsonConvert.SerializeObject(this.data);
+                var    settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
+                string JsonBody = JsonConvert.SerializeObject(this.binData.record, settings);
 
                 Logger.Log($"Write Data Json : {JsonBody}");
 
@@ -162,10 +158,10 @@ namespace LevanPangInterview.Services
                 this.LastError = writeRequest.error;
                 isSuccess      = (LastError is null);
             
-                Logger.Log($"Write LastError == null : {LastError == null}");
+                Logger.Log($"Write isSuccess : {isSuccess}");
+                Logger.Log($"Write LastError : {LastError?.ToString() ?? "No Error"}");
 
                 Logger.Log($"Write Result : " + writeRequest.downloadHandler.text);
-                Logger.Log($"Write Error  : " + LastError ?? "NO ERROR");
 
                 return isSuccess;
             }
@@ -213,19 +209,38 @@ namespace LevanPangInterview.Services
 
                 Logger.Log($"Last error null : {LastError == null}");
 
-                Logger.Log($"read result Result : " + readRequest.downloadHandler.text);
+                Logger.Log($"read result : " + readRequest.downloadHandler.text);
 
                 if (!isSuccess)
                     return false;
 
                 // deserialize
-                var json    = readRequest.downloadHandler.text;
-                var binData = JsonConvert.DeserializeObject<BinData>(json);
+                var json     = readRequest.downloadHandler.text;
+                var settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
+                var binData  = JsonConvert.DeserializeObject<BinData>(json, settings);
 
-                Logger.Log($"Read JSON : {json}");
-
-                this.data    = binData.data;
                 this.binData = binData;
+
+                Logger.Log($"Read JSON               : {json}");
+                Logger.Log($"Read Bin                : {binData}");
+                Logger.Log($"Read Record             : {binData.record}");
+                Logger.Log($"Read Record Items       : {binData.record.Items}");
+                Logger.Log($"Read Record Items.Count : {binData.record.Items.Count}");
+                
+                var first = binData.record.Items[0];
+
+                Logger.Log($"first      : {first}");
+                Logger.Log($"first.Type : {first.GetType()}");
+                
+                var data = (Leaderboards)binData.record.Items[0];
+
+                Logger.Log($"data                      : {data}");
+                Logger.Log($"data.maxRecords           : {data.maxRecords}");
+                Logger.Log($"data.Records              : {data.Records}");
+                Logger.Log($"data.Records.Count        : {data.Records.Count}");
+                Logger.Log($"data.Records.first        : {data.Records[0]}");
+                Logger.Log($"data.Records.first.name   : {data.Records[0].Name}");
+                Logger.Log($"data.Records.first.scorre : {data.Records[0].Score}");
 
                 return true;
 
@@ -242,14 +257,8 @@ namespace LevanPangInterview.Services
         [Serializable]
         public class BinData
         {
-            public Data     data     = new Data();
+            public Data     record   = new Data();
             public Metadata metadata = new Metadata();
-
-            public override string ToString()
-            =>
-                $"Root:" +
-                $"\n{data}" +
-                $"\n{metadata}";
         }
         [Serializable]
         public class Metadata
@@ -258,24 +267,11 @@ namespace LevanPangInterview.Services
             public bool     @private  = true;
             public DateTime createdAt = DateTime.UnixEpoch;
             public string   name      = "Name";
-
-            public override string ToString()
-            =>
-                $"MetaData:" +
-                $"\nid={id}" +
-                $"\nprivate={@private}" +
-                $"\ncreatedAt={createdAt}" +
-                $"\nname={name}";
         }
         [Serializable]
         public class Data
         {
             public List<Model> Items = new();
-
-            public override string ToString()
-            =>
-                $"Record:" +
-                $"\nitem=\n{JsonConvert.SerializeObject(Items)}";
         }
 
         ////////////////////////////////////////
@@ -289,6 +285,15 @@ namespace LevanPangInterview.Services
             this.WriteData();
             Debug.Log("Done");
         }
+
+        
+        [ContextMenu("ReadDataToCloud")]
+        protected void ReadDataToCloud()
+        {
+            this.ReadData();
+            Debug.Log("Done");
+        }
+
 
         #endif
 

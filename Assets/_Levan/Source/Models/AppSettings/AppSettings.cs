@@ -15,7 +15,7 @@ namespace LevanPangInterview.Models
         public Key               EascapeKey                     = Key.Escape;
         public ScreenOrientation ScreenOrientation              = ScreenOrientation.LandscapeLeft;
 
-        public bool              Always_Show_Android_Controls   = true; // Its easier to test;
+        public bool              Always_Show_Mobile_Controls   = true; // Its easier to test;
 
         public int               MaxSupportedPlayers            = 2;
 
