@@ -137,8 +137,17 @@ Known Isses :
 	+ the "New Record !" popup doesnt show up every time there is a new record
 - I Disabled some object pools (like the one in the "BallManager" class because of bugs),  but i do recomend the use of object pools ! :)
 - particals appear behind background in levels 2 and 3
-- sometimes it gets stuck on android. - possibly only between level changes
+- sometimes it gets stuck on android and pc builds.
 
+
+------------------------------------
+Path 1 :
+------------------------------------
+- Fixed leaderboard problems
+- Fixed Score view flow problems
+- Fixed particles appear under background bug.
+- Fixed crashes
+- Redesigned input HUD
 
 
 -----------------------------------------
